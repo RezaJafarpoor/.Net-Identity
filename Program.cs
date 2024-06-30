@@ -1,4 +1,5 @@
 using _Net_Identity.Data;
+using _Net_Identity.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,7 +12,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(option =>
     var defaultConnection = builder.Configuration.GetConnectionString("DefaultConnection");
     option.UseNpgsql(defaultConnection);
 });
-builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>();
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
